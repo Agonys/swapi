@@ -1,11 +1,18 @@
-import React, { FC } from "react";
+import React from "react";
 import styled from "styled-components";
 import * as IconsList from "assets/icons";
 
 import { Box } from "./Icon.styles";
 import { IPropsIcon } from "./Icon.types";
 
-const Icon: FC<IPropsIcon> = ({ name, color, className, rotate, onClick, wrapperClassName }) => {
+const Icon: React.FC<IPropsIcon> = ({
+  name,
+  color,
+  className,
+  rotate,
+  onClick,
+  wrapperClassName,
+}) => {
   const IconComponent = IconsList[name];
 
   const StyledIcon = styled(IconComponent)`

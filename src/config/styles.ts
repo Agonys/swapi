@@ -38,10 +38,6 @@ const GlobalStyle = createGlobalStyle`
   div {
     box-sizing: border-box;
   }
-  
-  #root {
-    
-  }
 `;
 
 export default GlobalStyle;

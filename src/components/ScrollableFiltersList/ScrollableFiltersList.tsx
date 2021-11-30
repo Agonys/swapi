@@ -19,4 +19,4 @@ const ScrollableFiltersList: React.FC<IPropsScrollableList> = ({ header, filters
   );
 };
 
-export default ScrollableFiltersList;
+export default React.memo(ScrollableFiltersList);

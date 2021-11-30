@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import dummyFiltersList from "./dummyFiltersList";
+import { films, homeworlds } from "./dummyFiltersList";
 
 import Icon from "components/Icon/Icon";
 import ScrollableFiltersList from "components/ScrollableFiltersList/ScrollableFiltersList";
@@ -24,8 +24,8 @@ const Filters: React.FC = () => {
 
       <FiltersOuterContainer areFiltersOpen={areFiltersOpen}>
         <FiltersInnerContainer>
-          <ScrollableFiltersList header="Homeworld" filtersList={dummyFiltersList} />
-          <ScrollableFiltersList header="Movie" filtersList={dummyFiltersList} />
+          <ScrollableFiltersList header="Homeworld" filtersList={homeworlds} />
+          <ScrollableFiltersList header="Movie" filtersList={films} />
         </FiltersInnerContainer>
       </FiltersOuterContainer>
     </FiltersWrapper>

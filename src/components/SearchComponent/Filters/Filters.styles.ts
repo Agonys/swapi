@@ -41,4 +41,8 @@ export const FiltersInnerContainer = styled.div`
   gap: 50px;
 
   background-color: ${({ theme }) => theme.colors.backgrounds.normal};
+
+  @media (max-width: 600px) {
+    padding: 30px 5px 50px;
+  }
 `;
