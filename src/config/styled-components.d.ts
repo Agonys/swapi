@@ -3,9 +3,10 @@ import "styled-components";
 declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
+      white: string;
+      gray: string;
       black: string;
       dimmed: string;
-      white: string;
       accent: string;
 
       backgrounds: {
@@ -17,6 +18,14 @@ declare module "styled-components" {
       borders: {
         dark: string;
       }
+    };
+    transitions: {
+      ease: string;
+      easeFast: string;
+      easeInOut: string;
+    };
+    elevation: {
+      D1: string;
     };
   }
 }

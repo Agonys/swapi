@@ -12,5 +12,6 @@ export const LogoWrapper = styled.div`
     -webkit-text-stroke-color: ${({ theme }) => theme.colors.accent};
     margin: 0;
     font-family: "Roboto", serif;
+    color: ${({ theme }) => theme.colors.black};
   }
 `;

@@ -1,24 +1,28 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
+import styled from "styled-components";
+import * as IconsList from "assets/icons";
 
-import { IPropsIcon } from "./Icon.types";
 import { Box } from "./Icon.styles";
+import { IPropsIcon } from "./Icon.types";
 
 const Icon: React.FC<IPropsIcon> = ({
   name,
-  onClick,
   color,
   className,
-  iconContainerClassName,
+  rotate,
+  onClick,
+  wrapperClassName,
 }) => {
-  const DynamicComponent = lazy(() => import(`assets/icons/${name}`));
-  console.log(DynamicComponent);
+  const IconComponent = IconsList[name];
+
+  const StyledIcon = styled(IconComponent)`
+    color: ${color ?? "inherit"};
+  `;
 
   return (
-    <Suspense fallback={null}>
-      <Box className={iconContainerClassName} onClick={onClick} color={color}>
-        <DynamicComponent className={className} />
-      </Box>
-    </Suspense>
+    <Box onClick={onClick} rotate={rotate} className={wrapperClassName}>
+      <StyledIcon className={className} />
+    </Box>
   );
 };
 

@@ -1,18 +1,15 @@
-import * as iconsList from "assets/icons";
-
-// Setting name property to be only available names from iconsList.
-// IDE should catch it and display only possible values.
-const iconsListCopy = { ...iconsList };
+import * as IconsList from "assets/icons";
 
 export interface IPropsIcon {
-  name: keyof typeof iconsListCopy;
+  name: keyof typeof IconsList;
 
   className?: string;
-  iconContainerClassName?: string;
   color?: string;
-  onClick?: () => void;
+  rotate?: boolean;
+  onClick?: (...args: any[]) => void;
+  wrapperClassName?: string;
 }
 
 export interface IPropsBox {
-  color?: string;
+  rotate?: boolean;
 }

@@ -13,11 +13,30 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${theme.colors.backgrounds.normal};
     background-image: url(${stardustPattern});
     font-family: "Ubuntu", sans-serif;
+    color: ${({ theme }) => theme.colors.white};
+    
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background-color: ${({ theme }) => theme.colors.backgrounds.dark};
+      border-radius: 7px;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: ${({ theme }) => theme.colors.accent};
+      border-radius: 7px;
+    }
   }
   
   p {
     margin: 0;
     font-size: 1.4rem;
+  }
+  
+  div {
+    box-sizing: border-box;
   }
 `;
 
