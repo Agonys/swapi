@@ -5,5 +5,5 @@ export const HomepageWrapper = styled.div`
   height: 100%;
   width: 100%;
   justify-content: center;
-  padding-top: 200px;
+  padding-top: 150px;
 `;
