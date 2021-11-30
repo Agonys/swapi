@@ -6,7 +6,6 @@ const Search: React.FC = () => {
   return (
     <SearchForm>
       <SearchInput placeholder="Name of character..." />
-      {/*<Cancel />*/}
     </SearchForm>
   );
 };
