@@ -4,7 +4,7 @@ const routes = {
     default: "/favorite",
   },
   characters: {
-    label: "Character list",
+    label: "Characters list",
     default: "/characters",
     detailed: ":characterID",
   },

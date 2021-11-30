@@ -38,6 +38,10 @@ const GlobalStyle = createGlobalStyle`
   div {
     box-sizing: border-box;
   }
+  
+  #root {
+    height: 100vh;
+  }
 `;
 
 export default GlobalStyle;

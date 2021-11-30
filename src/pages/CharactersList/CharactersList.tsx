@@ -1,7 +1,16 @@
 import React from "react";
 
-const NotFound: React.FC = () => {
-  return <div></div>;
+import { CharactersListWrapper } from "./CharactersList.styles";
+import SearchComponent from "components/SearchComponent/SearchComponent";
+import CharactersTable from "components/CharactersTable/CharactersTable";
+
+const CharactersList: React.FC = () => {
+  return (
+    <CharactersListWrapper>
+      <SearchComponent />
+      <CharactersTable />
+    </CharactersListWrapper>
+  );
 };
 
-export default NotFound;
+export default CharactersList;
