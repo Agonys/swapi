@@ -36,13 +36,13 @@ export const FiltersInnerContainer = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
+  padding: 30px 5px 50px;
 
-  padding: 30px 50px 50px;
   gap: 50px;
 
   background-color: ${({ theme }) => theme.colors.backgrounds.normal};
 
-  @media (max-width: 600px) {
-    padding: 30px 5px 50px;
+  @media (min-width: 600px) {
+    padding: 30px 50px 50px;
   }
 `;

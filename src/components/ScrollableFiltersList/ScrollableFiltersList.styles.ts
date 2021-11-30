@@ -15,7 +15,7 @@ export const Header = styled.h4`
 
 export const ListWrapper = styled.div`
   overflow: hidden;
-  overflow-y: auto;
+  overflow-y: visible;
 
   &::-webkit-scrollbar {
     width: 4px;

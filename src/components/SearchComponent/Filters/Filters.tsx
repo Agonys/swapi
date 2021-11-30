@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { films, homeworlds } from "./dummyFiltersList";
+import movies from "dummyData/movies";
+import planets from "dummyData/planets";
 
 import Icon from "components/Icon/Icon";
 import ScrollableFiltersList from "components/ScrollableFiltersList/ScrollableFiltersList";
@@ -9,9 +10,11 @@ import {
   FiltersOuterContainer,
   FiltersInnerContainer,
 } from "./Filters.styles";
+import { useLocation } from "react-router-dom";
 
 const Filters: React.FC = () => {
-  const [areFiltersOpen, setFiltersOpen] = useState(false);
+  const { pathname } = useLocation();
+  const [areFiltersOpen, setFiltersOpen] = useState(pathname === "/");
 
   return (
     <FiltersWrapper>
@@ -24,8 +27,14 @@ const Filters: React.FC = () => {
 
       <FiltersOuterContainer areFiltersOpen={areFiltersOpen}>
         <FiltersInnerContainer>
-          <ScrollableFiltersList header="Homeworld" filtersList={homeworlds} />
-          <ScrollableFiltersList header="Movie" filtersList={films} />
+          <ScrollableFiltersList
+            header="Homeworld"
+            filtersList={planets.map(({ name }) => ({ name }))}
+          />
+          <ScrollableFiltersList
+            header="Movie"
+            filtersList={movies.map(({ title }) => ({ name: title }))}
+          />
         </FiltersInnerContainer>
       </FiltersOuterContainer>
     </FiltersWrapper>

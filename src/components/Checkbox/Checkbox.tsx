@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import Icon from "components/Icon/Icon";
-
 import { ICheckboxProps } from "./Checkbox.types";
 
 import { CheckboxContainer, StyledCheckbox, Label } from "./Checkbox.styles";
