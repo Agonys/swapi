@@ -8,7 +8,7 @@ const CharactersList: React.FC = () => {
   return (
     <CharactersListWrapper>
       <SearchComponent />
-      <CharactersTable />
+      <CharactersTable isFavorite={false} />
     </CharactersListWrapper>
   );
 };

@@ -11,11 +11,14 @@ const favorites = createSlice({
     },
 
     toggleFavorite(state, { payload }: PayloadAction<string>) {
-      const isFavoriteOnList = state.favoritesList.find((favorite) => favorite === payload);
+      const normalizedPayload = payload.toLowerCase();
+      const isFavoriteOnList = state.favoritesList.some(
+        (favorite) => favorite === normalizedPayload,
+      );
 
       state.favoritesList = isFavoriteOnList
-        ? state.favoritesList.filter((favorite) => favorite !== payload)
-        : [...state.favoritesList, payload];
+        ? state.favoritesList.filter((favorite) => favorite !== normalizedPayload)
+        : [...state.favoritesList, normalizedPayload];
 
       localStorage.setItem(LOCAL_STORAGE_FAVORITES_KEY, JSON.stringify(state.favoritesList));
     },

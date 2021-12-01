@@ -1,7 +1,8 @@
 const routes = {
   favorite: {
     label: "Favorite",
-    default: "/favorite",
+    basic: "/favorite",
+    default: "/favorite/:pageID",
   },
   characters: {
     label: "Characters list",

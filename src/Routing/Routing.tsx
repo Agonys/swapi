@@ -14,9 +14,14 @@ const Routing: React.FC = () => (
       element={<Navigate replace to={`${routes.characters.basic}/1`} />}
     />
 
+    <Route path={routes.favorite.default} element={<Favorite />} />
+    <Route
+      path={routes.favorite.basic}
+      element={<Navigate replace to={`${routes.favorite.basic}/1`} />}
+    />
+
     <Route path={routes.profile.default} element={<CharacterDetails />} />
     <Route path={routes.contact.default} element={<Contact />} />
-    <Route path={routes.favorite.default} element={<Favorite />} />
 
     <Route path="*" element={<NotFound />} />
   </Routes>
