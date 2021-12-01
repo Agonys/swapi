@@ -25,7 +25,7 @@ const theme: DefaultTheme = {
     easeInOut: ".3s ease-in-out",
   },
   elevation: {
-    D1: "-8px 10px 9px -4px rgba(0, 0, 0, 0.25), 8px 10px 9px -4px rgba(0, 0, 0, 0.25)",
+    D1: "-10px 13px 9px -4px rgba(0, 0, 0, 0.25), 10px 13px 9px -4px rgba(0, 0, 0, 0.25)",
   },
 };
 

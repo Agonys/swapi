@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import Icon from "components/Icon/Icon";
 
-import { IPropsFavorite } from "./IPropsFavorite";
+import { IPropsFavorites } from "./Favorite.types";
 
 import { FavoriteWrapper } from "./Favorite.styles";
 
-const Favorite: React.FC<IPropsFavorite> = ({ isStarSelected }) => {
-  const [isSelected, setSelected] = useState(isStarSelected);
+const Favorite: React.FC<IPropsFavorites> = ({ isStarSelected }) => {
   return (
-    <FavoriteWrapper onClick={() => setSelected((prevState) => !prevState)}>
-      <Icon name={isSelected ? "StarFilled" : "Star"} />
+    <FavoriteWrapper isSelected={isStarSelected}>
+      <Icon name={isStarSelected ? "StarFilled" : "Star"} />
     </FavoriteWrapper>
   );
 };

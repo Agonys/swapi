@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import debounce from "utils/debounce";
 import routes from "config/routes";
 import { useAppDispatch } from "store/store";
@@ -11,6 +11,7 @@ import { SearchForm, SearchInput } from "./Search.styles";
 
 const Search: React.FC = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const dispatch = useAppDispatch();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,7 +27,10 @@ const Search: React.FC = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate(`${routes.characters.basic}/1`);
+    const route = pathname.includes(routes.characters.basic)
+      ? routes.characters.basic
+      : routes.favorite.basic;
+    navigate(`${route}/1`);
   };
 
   return (

@@ -97,7 +97,11 @@ const CharactersTable: React.FC<IPropsCharactersTable> = ({ isFavorite }) => {
     <>
       <TableWrapper isDataToDisplay={slicedArray.length > 0}>
         {slicedArray.length === 0 ? (
-          <h2>No data to display &nbsp;:(</h2>
+          <h2>
+            No data to display &nbsp;
+            <br />
+            (┛ಠ_ಠ)┛彡┻━┻
+          </h2>
         ) : (
           <>
             <Row isHeader>
