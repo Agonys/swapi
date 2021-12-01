@@ -23,6 +23,7 @@ const Filters: React.FC = () => {
     filmsList,
     fetch: { isLoading: isFilmsListLoading },
   } = useAppSelector((state) => state.films);
+  const { films, homeworlds } = useAppSelector((state) => state.filters.filters);
 
   const { pathname } = useLocation();
   const [areFiltersOpen, setFiltersOpen] = useState(pathname === "/");
@@ -47,6 +48,7 @@ const Filters: React.FC = () => {
               header="Homeworld"
               filtersList={planetsList.map(({ name }) => ({ name }))}
               filterType={filterType.HOMEWORLDS}
+              filtersActive={homeworlds}
             />
           )}
           {isFilmsListLoading ? (
@@ -58,6 +60,7 @@ const Filters: React.FC = () => {
               header="Film"
               filtersList={filmsList.map(({ title }) => ({ name: title }))}
               filterType={filterType.FILMS}
+              filtersActive={films}
             />
           )}
         </FiltersInnerContainer>

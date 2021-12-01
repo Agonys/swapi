@@ -23,6 +23,18 @@ export const TableWrapper = styled.div<IPropsTableWrapper>`
 
 export const Cell = styled.div<{ disableBelowPC?: boolean }>`
   flex-basis: 10%;
+  padding: 15px 0;
+
+  &:first-of-type {
+    padding-left: 15px;
+  }
+
+  &:last-of-type {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
 
   ${({ disableBelowPC }) =>
     disableBelowPC &&
@@ -36,7 +48,6 @@ export const Cell = styled.div<{ disableBelowPC?: boolean }>`
 export const Row = styled.div<IPropsRow>`
   display: flex;
   width: 100%;
-  padding: 15px;
   font-size: 1.6rem;
   justify-content: space-between;
   gap: 10px;

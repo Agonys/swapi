@@ -4,17 +4,17 @@ import { ICheckboxProps } from "./Checkbox.types";
 
 import { CheckboxContainer, StyledCheckbox, Label } from "./Checkbox.styles";
 
-const Checkbox: React.FC<ICheckboxProps> = ({ name, onClick }) => {
-  const [isChecked, setChecked] = useState(false);
+const Checkbox: React.FC<ICheckboxProps> = ({ name, onClick, isChecked = false }) => {
+  const [isBoxChecked, setBoxChecked] = useState(isChecked);
 
   const handleClick = () => {
-    setChecked((prevState) => !prevState);
+    setBoxChecked((prevState) => !prevState);
     if (onClick) onClick();
   };
 
   return (
     <CheckboxContainer onClick={handleClick}>
-      <StyledCheckbox isChecked={isChecked} />
+      <StyledCheckbox isChecked={isBoxChecked} />
       <Label>{name}</Label>
     </CheckboxContainer>
   );

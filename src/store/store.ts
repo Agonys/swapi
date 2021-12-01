@@ -4,6 +4,7 @@ import peopleSlice from "./slices/people/people";
 import filmsSlice from "./slices/films/films";
 import planetsSlice from "./slices/planets/planets";
 import filtersSlice from "./slices/filters/filters";
+import favoritesSlice from "./slices/favorites/favorites";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 const appReducer = combineReducers({
@@ -11,6 +12,7 @@ const appReducer = combineReducers({
   films: filmsSlice,
   planets: planetsSlice,
   filters: filtersSlice,
+  favorites: favoritesSlice,
 });
 
 export const store = configureStore({
