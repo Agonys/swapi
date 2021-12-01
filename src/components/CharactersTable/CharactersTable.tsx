@@ -31,15 +31,12 @@ const CharactersTable: React.FC = () => {
   const { favoritesList } = useAppSelector((state) => state.favorites);
 
   const filteredPeopleArray = useMemo(() => {
+    const searchValue = filters.searchValue.toLowerCase();
     const filmFilters = filters.filters.films.map((film) => film.toLowerCase());
     const homeworldsFilters = filters.filters.homeworlds.map((homeworld) =>
       homeworld.toLowerCase(),
     );
-    const searchValue = filters.searchValue.toLowerCase();
-    let newPeopleList = peopleList.map((person) => ({
-      ...person,
-      // filmConnection: person.filmConnection.films.map(({ title }) => title.toLowerCase()),
-    }));
+    let newPeopleList = [...peopleList];
 
     if (filters.searchValue.length > 0) {
       newPeopleList = newPeopleList.filter(({ name }) => name.toLowerCase().includes(searchValue));
