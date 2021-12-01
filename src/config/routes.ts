@@ -5,8 +5,12 @@ const routes = {
   },
   characters: {
     label: "Characters list",
-    default: "/characters",
-    detailed: ":characterID",
+    basic: "/characters",
+    default: "/characters/:pageID",
+  },
+  profile: {
+    basic: "/profile",
+    default: "/profile/:characterID",
   },
   contact: {
     label: "Contact",

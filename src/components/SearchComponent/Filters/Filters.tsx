@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import movies from "dummyData/movies";
-import planets from "dummyData/planets";
+import { useLocation } from "react-router-dom";
+import { useAppSelector } from "store/store";
+
+import { filterType } from "types/redux";
 
 import Icon from "components/Icon/Icon";
+import CircularLoader from "components/CircularLoader/CircularLoader";
 import ScrollableFiltersList from "components/ScrollableFiltersList/ScrollableFiltersList";
 import {
   FiltersWrapper,
@@ -10,9 +13,17 @@ import {
   FiltersOuterContainer,
   FiltersInnerContainer,
 } from "./Filters.styles";
-import { useLocation } from "react-router-dom";
 
 const Filters: React.FC = () => {
+  const {
+    planetsList,
+    fetch: { isLoading: isPlanetsListLoading },
+  } = useAppSelector((state) => state.planets);
+  const {
+    filmsList,
+    fetch: { isLoading: isFilmsListLoading },
+  } = useAppSelector((state) => state.films);
+
   const { pathname } = useLocation();
   const [areFiltersOpen, setFiltersOpen] = useState(pathname === "/");
 
@@ -27,14 +38,28 @@ const Filters: React.FC = () => {
 
       <FiltersOuterContainer areFiltersOpen={areFiltersOpen}>
         <FiltersInnerContainer>
-          <ScrollableFiltersList
-            header="Homeworld"
-            filtersList={planets.map(({ name }) => ({ name }))}
-          />
-          <ScrollableFiltersList
-            header="Film"
-            filtersList={movies.map(({ title }) => ({ name: title }))}
-          />
+          {isPlanetsListLoading ? (
+            <>
+              <CircularLoader description="loading planets data..." />
+            </>
+          ) : (
+            <ScrollableFiltersList
+              header="Homeworld"
+              filtersList={planetsList.map(({ name }) => ({ name }))}
+              filterType={filterType.HOMEWORLDS}
+            />
+          )}
+          {isFilmsListLoading ? (
+            <>
+              <CircularLoader description="loading films data..." />
+            </>
+          ) : (
+            <ScrollableFiltersList
+              header="Film"
+              filtersList={filmsList.map(({ title }) => ({ name: title }))}
+              filterType={filterType.FILMS}
+            />
+          )}
         </FiltersInnerContainer>
       </FiltersOuterContainer>
     </FiltersWrapper>

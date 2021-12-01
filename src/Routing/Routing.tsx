@@ -7,9 +7,8 @@ import { Homepage, CharacterDetails, CharactersList, Contact, Favorite, NotFound
 const Routing: React.FC = () => (
   <Routes>
     <Route path="/" element={<Homepage />} />
-    <Route path={routes.characters.default} element={<CharactersList />}>
-      <Route path={routes.characters.detailed} element={<CharacterDetails />} />
-    </Route>
+    <Route path={routes.characters.default} element={<CharactersList />} />
+    <Route path={routes.profile.default} element={<CharacterDetails />} />
     <Route path={routes.contact.default} element={<Contact />} />
     <Route path={routes.favorite.default} element={<Favorite />} />
 
