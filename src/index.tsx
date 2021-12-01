@@ -4,17 +4,19 @@ import App from "./App";
 import GlobalStyle from "config/styles";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 
 import theme from "./config/styled-components";
+import { store } from "store/store";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <App />
       </ThemeProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root"),
 );
