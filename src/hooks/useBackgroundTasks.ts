@@ -1,8 +1,8 @@
 import { useCallback, useEffect } from "react";
 import { useAppDispatch } from "../store/store";
 import { useQuery } from "@apollo/client";
-import { IGetAllFilms, IGetAllPeople, IGetAllPlanets } from "../types/graphql";
-import { GET_ALL_FILMS, GET_ALL_PEOPLE, GET_ALL_PLANETS } from "../graphql/query";
+import { IGetAllFilms, IGetAllPeople, IGetAllPlanets, IPlanet } from "../types/graphql";
+import { GET_ALL_FILMS, GET_ALL_PEOPLE, GET_PLANET_NAMES } from "../graphql/query";
 import { setPlanets, setPlanetsError } from "store/slices/planets/planets";
 import { setPeople, setPeopleError } from "store/slices/people/people";
 import { setFilms, setFilmsError } from "store/slices/films/films";
@@ -18,7 +18,7 @@ const useBackgroundTasks = (): void => {
     [],
   );
 
-  useQuery<IGetAllPlanets>(GET_ALL_PLANETS, {
+  useQuery<IGetAllPlanets>(GET_PLANET_NAMES, {
     onCompleted: ({ allPlanets }) => {
       dispatch(setPlanets(allPlanets));
     },

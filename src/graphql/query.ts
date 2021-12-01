@@ -20,6 +20,16 @@ export const GET_ALL_PLANETS = gql`
   }
 `;
 
+export const GET_PLANET_NAMES = gql`
+  query {
+    allPlanets {
+      planets {
+        name
+      }
+    }
+  }
+`;
+
 export const GET_ALL_PEOPLE = gql`
   query {
     allPeople {

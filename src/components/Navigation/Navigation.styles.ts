@@ -14,9 +14,9 @@ export const ItemsContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const StyledNavLink = styled(NavLink)`
+export const StyledNavLink = styled(NavLink)<{ isActive?: boolean }>`
   font-size: 2rem;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, isActive }) => (isActive ? theme.colors.accent : theme.colors.white)};
   text-decoration: none;
   padding: 10px 0;
 

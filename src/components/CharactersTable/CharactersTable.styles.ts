@@ -97,3 +97,9 @@ export const TableBody = styled.div`
     border-radius: 7px;
   }
 `;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  gap: 45px;
+  margin-top: 25px;
+`;
