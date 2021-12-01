@@ -1,10 +1,8 @@
-import { TaskStatus } from "types/redux";
 import { PlanetsState } from "./planets.types";
 
 export const planetsInitialState: PlanetsState = {
   fetch: {
-    status: TaskStatus.IDLE,
-    isLoading: false,
+    isLoading: true,
     error: null,
   },
   planetsList: [],
