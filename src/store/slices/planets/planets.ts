@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { planetsInitialState } from "./planetsInitialStore";
+import { planetsInitialState } from "./planetsInitialState";
 import { IGetAllPlanetsResponse } from "types/graphql";
 
 const planets = createSlice({

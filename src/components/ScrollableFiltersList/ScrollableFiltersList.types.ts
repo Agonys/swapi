@@ -8,4 +8,5 @@ export interface IPropsScrollableList {
   header: string;
   filtersList: IFilterItem[];
   filterType: filterType;
+  filtersActive: string[];
 }

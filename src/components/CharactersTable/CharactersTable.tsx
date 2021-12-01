@@ -1,15 +1,18 @@
-import React, { useMemo } from "react";
+import React, { useMemo, MouseEvent } from "react";
 import { useParams } from "react-router-dom";
-import { useAppSelector } from "store/store";
+import { useAppDispatch, useAppSelector } from "store/store";
 
 import StyledLink from "components/StyledLink/StyledLink";
 import CircularLoader from "components/CircularLoader/CircularLoader";
 import { TableWrapper, Row, Cell, Border, TableBody } from "./CharactersTable.styles";
 import { CHARACTER_LIST_PAGE_LIMIT } from "config/constants";
 import routes from "config/routes";
+import Favorite from "components/Favorite/Favorite";
+import { toggleFavorite } from "../../store/slices/favorites/favorites";
 
 const CharactersTable: React.FC = () => {
   const { pageID } = useParams();
+  const dispatch = useAppDispatch();
   const parsedPageID = parseInt(pageID ?? "1");
   const {
     peopleList,
@@ -17,6 +20,7 @@ const CharactersTable: React.FC = () => {
     fetch: { isLoading, error },
   } = useAppSelector((state) => state.people);
   const filters = useAppSelector((state) => state.filters);
+  const { favoritesList } = useAppSelector((state) => state.favorites);
 
   const listRange = useMemo(() => {
     const maxPagesNumber = Math.ceil(peopleCount / CHARACTER_LIST_PAGE_LIMIT);
@@ -62,6 +66,11 @@ const CharactersTable: React.FC = () => {
     return newPeopleList.slice(...listRange);
   }, [listRange, filters, peopleList]);
 
+  const handleToggleFavorite = (e: MouseEvent<HTMLDivElement>, characterName: string) => {
+    e.preventDefault();
+    dispatch(toggleFavorite(characterName));
+  };
+
   if (isLoading && !error)
     return (
       <TableWrapper isDataToDisplay={false}>
@@ -105,7 +114,7 @@ const CharactersTable: React.FC = () => {
               } = person;
 
               return (
-                <StyledLink key={id} to={`${routes.profile.basic}/${name.replaceAll(" ", "-")}`}>
+                <StyledLink key={id} to={`${routes.profile.basic}/${name.replaceAll(" ", "_")}`}>
                   <Row>
                     <Cell>{name}</Cell>
                     <Cell>{homeworld.name}</Cell>
@@ -116,7 +125,9 @@ const CharactersTable: React.FC = () => {
                     <Cell disableBelowPC>{eyeColor}</Cell>
                     <Cell disableBelowPC>{birthYear}</Cell>
                     <Cell disableBelowPC>{gender}</Cell>
-                    <Cell>fav</Cell>
+                    <Cell onClick={(e) => handleToggleFavorite(e, name)}>
+                      <Favorite isStarSelected={favoritesList.includes(name)} />
+                    </Cell>
                   </Row>
                 </StyledLink>
               );

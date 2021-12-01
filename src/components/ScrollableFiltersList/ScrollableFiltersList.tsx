@@ -10,6 +10,7 @@ const ScrollableFiltersList: React.FC<IPropsScrollableList> = ({
   header,
   filtersList,
   filterType,
+  filtersActive,
 }) => {
   const dispatch = useAppDispatch();
   const handleClick = (filterEntry: string) => {
@@ -21,7 +22,11 @@ const ScrollableFiltersList: React.FC<IPropsScrollableList> = ({
       <ListWrapper>
         {filtersList.map(({ name }) => (
           <ListItem key={name}>
-            <Checkbox name={name} onClick={() => handleClick(name)} />
+            <Checkbox
+              name={name}
+              onClick={() => handleClick(name)}
+              isChecked={filtersActive.includes(name)}
+            />
           </ListItem>
         ))}
       </ListWrapper>
