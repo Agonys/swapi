@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IPropsRow, IPropsTableWrapper } from "./CharactersTable.types";
+import { IPropsRow, IPropsTableWrapper, IPropsCell } from "./CharactersTable.types";
 import { StyledNavLink } from "components/StyledLink/StyledLink.styles";
 
 export const TableWrapper = styled.div<IPropsTableWrapper>`
@@ -21,9 +21,10 @@ export const TableWrapper = styled.div<IPropsTableWrapper>`
   }
 `;
 
-export const Cell = styled.div<{ disableBelowPC?: boolean }>`
+export const Cell = styled.div<IPropsCell>`
   flex-basis: 10%;
   padding: 15px 0;
+  min-width: 70px;
 
   &:first-of-type {
     padding-left: 15px;
@@ -36,8 +37,8 @@ export const Cell = styled.div<{ disableBelowPC?: boolean }>`
     width: 100%;
   }
 
-  ${({ disableBelowPC }) =>
-    disableBelowPC &&
+  ${({ disableBelowPCRes }) =>
+    disableBelowPCRes &&
     `
     @media (max-width: 1024px) {
       display: none;

@@ -5,3 +5,11 @@ export interface IPropsRow {
 export interface IPropsTableWrapper {
   isDataToDisplay: boolean;
 }
+
+export interface IPropsCell {
+  disableBelowPCRes?: boolean;
+}
+
+export interface IPropsCharactersTable {
+  isFavorite: boolean;
+}

@@ -9,7 +9,12 @@ const Navigation: React.FC = () => {
   return (
     <NavigationWrapper>
       <ItemsContainer>
-        <StyledNavLink to={routes.favorite.default}>{routes.favorite.label}</StyledNavLink>
+        <StyledNavLink
+          to={`${routes.favorite.basic}/1`}
+          isActive={pathname.startsWith(routes.favorite.basic)}
+        >
+          {routes.favorite.label}
+        </StyledNavLink>
         <StyledNavLink
           to={`${routes.characters.basic}/1`}
           isActive={pathname.startsWith(routes.characters.basic)}

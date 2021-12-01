@@ -1,7 +1,14 @@
-import React, { useMemo, MouseEvent } from "react";
+import React, { useMemo, MouseEvent, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "store/store";
 
+import routes from "config/routes";
+import { toggleFavorite } from "store/slices/favorites/favorites";
+import useSliceArrayWithRange from "hooks/useSliceArrayWithRange";
+import { useAppDispatch, useAppSelector } from "store/store";
+import { IPropsCharactersTable } from "./CharactersTable.types";
+
+import Button from "components/Button/Button";
+import Favorite from "components/Favorite/Favorite";
 import StyledLink from "components/StyledLink/StyledLink";
 import CircularLoader from "components/CircularLoader/CircularLoader";
 import {
@@ -12,13 +19,10 @@ import {
   TableBody,
   ButtonsWrapper,
 } from "./CharactersTable.styles";
-import routes from "config/routes";
-import Favorite from "components/Favorite/Favorite";
-import { toggleFavorite } from "../../store/slices/favorites/favorites";
-import useSliceArrayWithRange from "../../hooks/useSliceArrayWithRange";
-import Button from "../Button/Button";
 
-const CharactersTable: React.FC = () => {
+import tableSchema from "./tableSchema";
+
+const CharactersTable: React.FC<IPropsCharactersTable> = ({ isFavorite }) => {
   const { pageID } = useParams();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -54,8 +58,14 @@ const CharactersTable: React.FC = () => {
       );
     }
 
+    if (isFavorite) {
+      newPeopleList = newPeopleList.filter(({ name }) =>
+        favoritesList.includes(name.toLowerCase()),
+      );
+    }
+
     return newPeopleList;
-  }, [filters, peopleList]);
+  }, [favoritesList, isFavorite, filters, peopleList]);
 
   const { slicedArray, nextPage, previousPage } = useSliceArrayWithRange(
     parsedPageID,
@@ -66,6 +76,15 @@ const CharactersTable: React.FC = () => {
     e.preventDefault();
     dispatch(toggleFavorite(characterName));
   };
+
+  const handleNavigate = useCallback(
+    (direction: "previous" | "next") => {
+      const route = isFavorite ? routes.favorite.basic : routes.characters.basic;
+      const navigationDirection = direction === "previous" ? previousPage : nextPage;
+      navigate(`${route}/${navigationDirection}`);
+    },
+    [isFavorite, previousPage, nextPage],
+  );
 
   if (isLoading && !error)
     return (
@@ -82,16 +101,11 @@ const CharactersTable: React.FC = () => {
         ) : (
           <>
             <Row isHeader>
-              <Cell>Name</Cell>
-              <Cell>Homeworld</Cell>
-              <Cell>Height</Cell>
-              <Cell>Mass</Cell>
-              <Cell disableBelowPC>Hair color</Cell>
-              <Cell disableBelowPC>Skin Color</Cell>
-              <Cell disableBelowPC>Eye color</Cell>
-              <Cell disableBelowPC>Birth year</Cell>
-              <Cell disableBelowPC>Gender</Cell>
-              <Cell>Favorite</Cell>
+              {tableSchema.headers.map(({ disableBelowPCRes, label }) => (
+                <Cell key={label} disableBelowPCRes={disableBelowPCRes}>
+                  {label}
+                </Cell>
+              ))}
             </Row>
             <Border />
 
@@ -117,13 +131,13 @@ const CharactersTable: React.FC = () => {
                       <Cell>{homeworld.name}</Cell>
                       <Cell>{height}</Cell>
                       <Cell>{mass}</Cell>
-                      <Cell disableBelowPC>{hairColor}</Cell>
-                      <Cell disableBelowPC>{skinColor}</Cell>
-                      <Cell disableBelowPC>{eyeColor}</Cell>
-                      <Cell disableBelowPC>{birthYear}</Cell>
-                      <Cell disableBelowPC>{gender}</Cell>
+                      <Cell disableBelowPCRes>{hairColor}</Cell>
+                      <Cell disableBelowPCRes>{skinColor}</Cell>
+                      <Cell disableBelowPCRes>{eyeColor}</Cell>
+                      <Cell disableBelowPCRes>{birthYear}</Cell>
+                      <Cell disableBelowPCRes>{gender}</Cell>
                       <Cell onClick={(e) => handleToggleFavorite(e, name)}>
-                        <Favorite isStarSelected={favoritesList.includes(name)} />
+                        <Favorite isStarSelected={favoritesList.includes(name.toLowerCase())} />
                       </Cell>
                     </Row>
                   </StyledLink>
@@ -134,11 +148,8 @@ const CharactersTable: React.FC = () => {
         )}
       </TableWrapper>
       <ButtonsWrapper>
-        <Button
-          text="Previous"
-          onClick={() => navigate(`${routes.characters.basic}/${previousPage}`)}
-        />
-        <Button text="Next" onClick={() => navigate(`${routes.characters.basic}/${nextPage}`)} />
+        <Button text="Previous" onClick={() => handleNavigate("previous")} />
+        <Button text="Next" onClick={() => handleNavigate("next")} />
       </ButtonsWrapper>
     </>
   );
