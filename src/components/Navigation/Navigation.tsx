@@ -10,7 +10,9 @@ const Navigation: React.FC = () => {
     <NavigationWrapper>
       <ItemsContainer>
         {routesValues.map((item) => (
-          <StyledNavLink to={item.default}>{item.label}</StyledNavLink>
+          <StyledNavLink key={item.label} to={item.default}>
+            {item.label}
+          </StyledNavLink>
         ))}
       </ItemsContainer>
     </NavigationWrapper>

@@ -24,12 +24,12 @@ const CharactersTable: React.FC = () => {
         {Array(10)
           .fill(0)
           .map((_, i) => (
-            <StyledLink to={`/${i}`}>
+            <StyledLink key={i} to={`/${i}`}>
               <Row>
                 {Array(10)
                   .fill(0)
                   .map((_, i) => (
-                    <Cell>{i}</Cell>
+                    <Cell key={i}>{i}</Cell>
                   ))}
               </Row>
             </StyledLink>

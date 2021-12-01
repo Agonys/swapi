@@ -10,7 +10,7 @@ const ScrollableFiltersList: React.FC<IPropsScrollableList> = ({ header, filters
       <Header>{header}</Header>
       <ListWrapper>
         {filtersList.map(({ name }) => (
-          <ListItem>
+          <ListItem key={name}>
             <Checkbox name={name} />
           </ListItem>
         ))}
