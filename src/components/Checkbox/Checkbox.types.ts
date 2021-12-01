@@ -4,4 +4,5 @@ export interface IStyledCheckbox {
 
 export interface ICheckboxProps {
   name: string;
+  onClick?: () => void;
 }

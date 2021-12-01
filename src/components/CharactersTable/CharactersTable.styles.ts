@@ -1,9 +1,12 @@
 import styled from "styled-components";
-import { IPropsRow } from "./CharactersTable.types";
+import { IPropsRow, IPropsTableWrapper } from "./CharactersTable.types";
 import { StyledNavLink } from "components/StyledLink/StyledLink.styles";
 
-export const TableWrapper = styled.div`
+export const TableWrapper = styled.div<IPropsTableWrapper>`
   width: 100%;
+  height: 100%;
+  justify-content: ${({ isDataToDisplay }) => (isDataToDisplay ? "flex-start" : "center")};
+  align-items: center;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -11,6 +14,11 @@ export const TableWrapper = styled.div`
   margin-top: 30px;
   background-color: ${({ theme }) => theme.colors.backgrounds.normal};
   box-shadow: ${({ theme }) => theme.elevation.D1};
+
+  h2 {
+    font-size: 2rem;
+    margin: 0;
+  }
 `;
 
 export const Cell = styled.div<{ disableBelowPC?: boolean }>`
@@ -31,6 +39,7 @@ export const Row = styled.div<IPropsRow>`
   padding: 15px;
   font-size: 1.6rem;
   justify-content: space-between;
+  gap: 10px;
 
   color: ${({ theme }) => theme.colors.white};
   ${({ isHeader, theme }) => isHeader && `background-color: ${theme.colors.backgrounds.dark}`};

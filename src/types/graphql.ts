@@ -12,6 +12,10 @@ export interface IPeople {
   birthYear: string;
   gender: string;
   id: number;
+  homeworld: Pick<IPlanet, "name">;
+  filmConnection: {
+    films: Pick<IFilms, "title">[];
+  };
 }
 
 export interface IGetAllPeopleResponse extends IQueryResponse {

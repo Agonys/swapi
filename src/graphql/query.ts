@@ -34,6 +34,14 @@ export const GET_ALL_PEOPLE = gql`
         birthYear
         gender
         id
+        homeworld {
+          name
+        }
+        filmConnection {
+          films {
+            title
+          }
+        }
       }
     }
   }
