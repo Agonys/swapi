@@ -1,13 +1,13 @@
 import logger from "redux-logger";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import peopleSlice from "./slices/people/people";
-import moviesSlice from "./slices/movies/movies";
+import filmsSlice from "./slices/films/films";
 import planetsSlice from "./slices/planets/planets";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 const appReducer = combineReducers({
   people: peopleSlice,
-  movies: moviesSlice,
+  films: filmsSlice,
   planets: planetsSlice,
 });
 

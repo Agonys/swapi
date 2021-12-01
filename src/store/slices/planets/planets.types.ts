@@ -1,20 +1,8 @@
 import { IFetchStatus } from "types/redux";
-
-export interface PlanetsData {
-  name: string;
-  diameter: number;
-  rotationPeriod: number;
-  orbitalPeriod: number;
-  gravity: string;
-  population: number;
-  climates: string[];
-  terrains: string[];
-  surfaceWater: number;
-  id: string;
-}
+import { IPlanet } from "types/graphql";
 
 export interface PlanetsState {
   fetch: IFetchStatus;
-  planetsList: PlanetsData[];
+  planetsList: IPlanet[];
   planetsCount: number;
 }

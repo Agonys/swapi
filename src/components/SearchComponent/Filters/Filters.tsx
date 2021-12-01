@@ -32,7 +32,7 @@ const Filters: React.FC = () => {
             filtersList={planets.map(({ name }) => ({ name }))}
           />
           <ScrollableFiltersList
-            header="Movie"
+            header="Film"
             filtersList={movies.map(({ title }) => ({ name: title }))}
           />
         </FiltersInnerContainer>
