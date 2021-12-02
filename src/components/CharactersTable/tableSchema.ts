@@ -1,4 +1,4 @@
-export default {
+const tableSchema = {
   headers: [
     {
       label: "Name",
@@ -42,3 +42,5 @@ export default {
     },
   ],
 };
+
+export default tableSchema;

@@ -3,29 +3,27 @@ import { gql } from "@apollo/client";
 export const GET_ALL_PLANETS = gql`
   query {
     allPlanets {
-      totalCount
       planets {
         name
-        diameter
-        rotationPeriod
-        orbitalPeriod
-        gravity
-        population
-        climates
-        terrains
-        surfaceWater
         id
       }
     }
   }
 `;
 
-export const GET_PLANET_NAMES = gql`
-  query {
-    allPlanets {
-      planets {
-        name
-      }
+export const GET_PLANET_DATA = gql`
+  query GetPlanet($planetID: ID) {
+    planet(planetID: $planetID) {
+      name
+      diameter
+      rotationPeriod
+      orbitalPeriod
+      gravity
+      population
+      climates
+      terrains
+      surfaceWater
+      id
     }
   }
 `;
@@ -46,6 +44,7 @@ export const GET_ALL_PEOPLE = gql`
         id
         homeworld {
           name
+          id
         }
         filmConnection {
           films {

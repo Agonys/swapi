@@ -1,7 +1,11 @@
 import React from "react";
+import NoData from "components/NoData/NoData";
+import Card from "components/Card/Card";
 
-const CharactersList: React.FC = () => {
-  return <div>Nie ma takiej strony :C</div>;
-};
+const NotFound: React.FC = () => (
+  <Card>
+    <NoData message={`404\nOops... Looks like that page doesn't exist!`} />
+  </Card>
+);
 
-export default CharactersList;
+export default NotFound;

@@ -34,7 +34,7 @@ const Filters: React.FC = () => {
         areFiltersOpen={areFiltersOpen}
         onClick={() => setFiltersOpen((prevState) => !prevState)}
       >
-        Filters <Icon name="Chevron" rotate={areFiltersOpen} />
+        Filters <Icon name="Chevron" rotateIcon={areFiltersOpen} />
       </FilterLabel>
 
       <FiltersOuterContainer areFiltersOpen={areFiltersOpen}>

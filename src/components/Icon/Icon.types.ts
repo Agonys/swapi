@@ -4,11 +4,9 @@ export interface IPropsIcon {
   name: keyof typeof IconsList;
 
   className?: string;
-  rotate?: boolean;
+  rotateIcon?: boolean;
   onClick?: (...args: any[]) => void;
   wrapperClassName?: string;
 }
 
-export interface IPropsBox {
-  rotate?: boolean;
-}
+export type IPropsBox = Pick<IPropsIcon, "rotateIcon">;
