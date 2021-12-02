@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Routing from "./Routing/Routing";
+import PageLayout from "./components/PageLayout/PageLayout";
+import useBackgroundTasks from "hooks/useBackgroundTasks";
+import { Toaster } from "react-hot-toast";
+import { useTheme } from "styled-components";
 
-function App() {
+const App: React.FC = () => {
+  useBackgroundTasks();
+  const theme = useTheme();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PageLayout>
+      <Routing />
+      <Toaster
+        position="bottom-center"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: theme.colors.backgrounds.dark,
+            color: theme.colors.white,
+            maxWidth: "400px",
+            width: "100%",
+            margin: "0 auto",
+            fontSize: "1.4rem",
+            padding: "20px 15px",
+            textAlign: "center",
+          },
+        }}
+      />
+    </PageLayout>
   );
-}
+};
 
 export default App;
