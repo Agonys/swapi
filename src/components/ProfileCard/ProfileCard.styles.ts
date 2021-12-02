@@ -19,18 +19,14 @@ export const Column = styled.div`
   width: 50%;
 
   &:first-of-type div {
-    border-right: 1px solid ${({ theme }) => theme.colors.backgrounds.dark};
     justify-content: flex-end;
+
+    border-right: 1px solid ${({ theme }) => theme.colors.backgrounds.dark};
   }
 
   &:last-of-type div {
     border-left: 1px solid ${({ theme }) => theme.colors.backgrounds.dark};
   }
-`;
-
-export const Row = styled.div`
-  display: flex;
-  font-size: 1.4rem;
 `;
 
 export const Cell = styled.div<IPropsCell>`
@@ -40,8 +36,9 @@ export const Cell = styled.div<IPropsCell>`
   gap: 10px;
   user-select: none;
   align-items: center;
-  ${({ displayPointer }) => displayPointer && "cursor: pointer"};
   font-size: 1.4rem;
+
+  ${({ displayPointer }) => displayPointer && "cursor: pointer"};
 
   &:nth-child(2n) {
     background-color: ${({ theme }) => theme.colors.backgrounds.light};

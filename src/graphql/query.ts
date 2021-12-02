@@ -1,24 +1,4 @@
 import { gql } from "@apollo/client";
-//
-// export const GET_ALL_PLANETS = gql`
-//   query {
-//     allPlanets {
-//       totalCount
-//       planets {
-//         name
-//         diameter
-//         rotationPeriod
-//         orbitalPeriod
-//         gravity
-//         population
-//         climates
-//         terrains
-//         surfaceWater
-//         id
-//       }
-//     }
-//   }
-// `;
 
 export const GET_ALL_PLANETS = gql`
   query {

@@ -1,14 +1,17 @@
 import { useCallback, useEffect } from "react";
-import { useAppDispatch } from "../store/store";
 import { useQuery } from "@apollo/client";
-import { IGetAllFilms, IGetAllPeople, IGetAllPlanets } from "../types/graphql";
-import { GET_ALL_FILMS, GET_ALL_PEOPLE, GET_ALL_PLANETS } from "../graphql/query";
-import { setPlanets, setPlanetsError } from "store/slices/planets/planets";
-import { setPeople, setPeopleError } from "store/slices/people/people";
-import { setFilms, setFilmsError } from "store/slices/films/films";
-import { LOCAL_STORAGE_FAVORITES_KEY } from "../config/constants";
-import { setFavorites } from "store/slices/favorites/favorites";
+
 import { displayToast } from "utils/displayToast";
+import { LOCAL_STORAGE_FAVORITES_KEY } from "config/constants";
+import { GET_ALL_FILMS, GET_ALL_PEOPLE, GET_ALL_PLANETS } from "graphql/query";
+
+import { setFavorites } from "store/slices/favorites/favorites";
+import { useAppDispatch } from "store/store";
+import { setFilms, setFilmsError } from "store/slices/films/films";
+import { setPeople, setPeopleError } from "store/slices/people/people";
+import { setPlanets, setPlanetsError } from "store/slices/planets/planets";
+
+import { IGetAllFilms, IGetAllPeople, IGetAllPlanets } from "types/graphql";
 
 const useBackgroundTasks = (): void => {
   const dispatch = useAppDispatch();

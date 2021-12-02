@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import ClickAwayListener from "react-click-away-listener";
+
+import Icon from "components/Icon/Icon";
 
 import { IPropsModalWrapper } from "./Modal.types";
 import { ModalWrapper, CloseButtonWrapper, ModalOverlay } from "./Modal.styles";
-import Icon from "../Icon/Icon";
-import ClickAwayListener from "react-click-away-listener";
 
-const Modal: React.FC<IPropsModalWrapper> = ({ children, isOpen, onClose }) => {
-  if (!isOpen) return null;
+const Modal: React.FC<IPropsModalWrapper> = ({ children, onClose }) => {
   return ReactDOM.createPortal(
     <>
       <ModalOverlay />

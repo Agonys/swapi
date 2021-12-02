@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import routes from "config/routes";
 import { Homepage, CharacterDetails, CharactersList, Contact, Favorite, NotFound } from "pages";
-import NoData from "../components/NoData/NoData";
 
 const Routing: React.FC = () => (
   <Routes>

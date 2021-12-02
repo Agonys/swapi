@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { IPropsRow, IPropsTableWrapper, IPropsCell } from "./CharactersTable.types";
 import { StyledNavLink } from "components/StyledLink/StyledLink.styles";
-import { scrollbar } from "../../config/styles";
+import { scrollbar } from "config/styles";
 
 export const TableWrapper = styled.div<IPropsTableWrapper>`
   width: 100%;

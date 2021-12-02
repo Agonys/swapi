@@ -12,11 +12,11 @@ import Button from "components/Button/Button";
 import Favorite from "components/Favorite/Favorite";
 import CircularLoader from "components/CircularLoader/CircularLoader";
 import HomeworldModal from "components/HomeworldModal/HomeworldModal";
+import Card from "components/Card/Card";
 
 import { IGetPlanetResponse } from "types/graphql";
 
-import { Header, DataContainer, Row, Cell, Column } from "./ProfileCard.styles";
-import Card from "../Card/Card";
+import { Header, DataContainer, Cell, Column } from "./ProfileCard.styles";
 
 const ProfileCard: React.FC = () => {
   const { characterID } = useParams();
@@ -55,11 +55,11 @@ const ProfileCard: React.FC = () => {
   const handleModalOpen = async () => {
     setModalOpen(true);
     if (person) {
-      const variables = {
-        planetID: person.homeworld.id,
-      };
-
-      await getMorePlanetData({ variables });
+      await getMorePlanetData({
+        variables: {
+          planetID: person.homeworld.id,
+        },
+      });
     }
   };
 
@@ -114,7 +114,7 @@ const ProfileCard: React.FC = () => {
       </Card>
 
       {isModalOpen && !planetDataLoading && !error && (
-        <HomeworldModal isOpen onClose={() => setModalOpen(false)} planet={planetData?.planet} />
+        <HomeworldModal onClose={() => setModalOpen(false)} planet={planetData?.planet} />
       )}
     </>
   );

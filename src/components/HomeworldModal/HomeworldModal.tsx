@@ -7,9 +7,9 @@ import { IPropsHomeworldModal } from "./HomeworldModal.types";
 
 import { Header, DescriptionContainer, Cell, Column } from "./HomeworldModal.styles";
 
-const HomeworldModal: React.FC<IPropsHomeworldModal> = ({ planet, isOpen, onClose }) => {
+const HomeworldModal: React.FC<IPropsHomeworldModal> = ({ planet, onClose }) => {
   return (
-    <Modal onClose={onClose} isOpen={isOpen}>
+    <Modal onClose={onClose}>
       {!planet ? (
         <NoData />
       ) : (
