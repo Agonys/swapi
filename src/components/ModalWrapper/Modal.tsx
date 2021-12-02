@@ -13,7 +13,7 @@ const Modal: React.FC<IPropsModalWrapper> = ({ children, isOpen, onClose }) => {
       <ModalOverlay />
       <ClickAwayListener onClickAway={onClose}>
         <ModalWrapper>
-          <CloseButtonWrapper>
+          <CloseButtonWrapper onClick={onClose}>
             <Icon name="Cancel" />
           </CloseButtonWrapper>
           {children}

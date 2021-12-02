@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { IPropsRow, IPropsTableWrapper, IPropsCell } from "./CharactersTable.types";
 import { StyledNavLink } from "components/StyledLink/StyledLink.styles";
+import { scrollbar } from "../../config/styles";
 
 export const TableWrapper = styled.div<IPropsTableWrapper>`
   width: 100%;
@@ -84,19 +85,7 @@ export const TableBody = styled.div`
     }
   }
 
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: ${({ theme }) => theme.colors.backgrounds.dark};
-    border-radius: 7px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.accent};
-    border-radius: 7px;
-  }
+  ${scrollbar};
 `;
 
 export const ButtonsWrapper = styled.div`

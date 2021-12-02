@@ -83,6 +83,7 @@ const CharactersTable: React.FC<IPropsCharactersTable> = ({ isFavorite }) => {
       const navigationDirection = direction === "previous" ? previousPage : nextPage;
       navigate(`${route}/${navigationDirection}`);
     },
+    //eslint-disable-next-line react-hooks/exhaustive-deps
     [isFavorite, previousPage, nextPage],
   );
 

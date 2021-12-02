@@ -7,14 +7,14 @@ import { IPropsIcon } from "./Icon.types";
 const Icon: React.FC<IPropsIcon> = ({
   name,
   className,
-  rotate = false,
+  rotateIcon = false,
   onClick,
   wrapperClassName,
 }) => {
   const IconComponent = IconsList[name];
 
   return (
-    <Box onClick={onClick} rotate={rotate} className={wrapperClassName}>
+    <Box onClick={onClick} rotateIcon={rotateIcon} className={wrapperClassName}>
       <IconComponent className={className} />
     </Box>
   );

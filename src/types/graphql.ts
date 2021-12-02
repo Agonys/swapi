@@ -12,7 +12,7 @@ export interface IPeople {
   birthYear: string;
   gender: string;
   id: number;
-  homeworld: Pick<IPlanet, "name">;
+  homeworld: Pick<IPlanet, "name" | "id">;
   filmConnection: {
     films: Pick<IFilms, "title">[];
   };
@@ -51,6 +51,10 @@ export interface IPlanet {
   terrains: string[];
   surfaceWater: number;
   id: string;
+}
+
+export interface IGetPlanetResponse {
+  planet: IPlanet;
 }
 
 export interface IGetAllPlanetsResponse extends IQueryResponse {

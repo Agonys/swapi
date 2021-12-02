@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { scrollbar } from "config/styles";
 
 export const ListContainer = styled.div`
   display: flex;
@@ -17,19 +18,7 @@ export const ListWrapper = styled.div`
   overflow: hidden;
   overflow-y: visible;
 
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: ${({ theme }) => theme.colors.backgrounds.dark};
-    border-radius: 7px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.accent};
-    border-radius: 7px;
-  }
+  ${scrollbar}
 `;
 
 export const ListItem = styled.div`

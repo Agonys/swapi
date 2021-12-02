@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { scrollbar } from "config/styles";
 
 export const ModalWrapper = styled.div`
   position: fixed;
@@ -6,9 +7,20 @@ export const ModalWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  padding: 50px;
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.colors.backgrounds.light};
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  max-height: 80%;
+  padding: 20px 50px 50px;
+  font-size: 1.4rem;
+
+  background-color: ${({ theme }) => theme.colors.backgrounds.normal};
+  box-shadow: ${({ theme }) => theme.elevation.D1};
+  ${scrollbar}
 `;
 
 export const CloseButtonWrapper = styled.div`
@@ -16,6 +28,7 @@ export const CloseButtonWrapper = styled.div`
   right: 0;
   top: 0;
   padding: 15px;
+  cursor: pointer;
 `;
 
 export const ModalOverlay = styled.div`
